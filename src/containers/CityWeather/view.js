@@ -28,11 +28,11 @@ class CityWeather extends React.Component {
   }
 
   render() {
-    const { city, cityWeather } = this.props
+    const { cityWeather } = this.props
 
     return cityWeather.get('isLoading')
       ? <Spinner />
-      : <Forecast city={city.toJS()} forecast={cityWeather.get('forecast').toJS()} />
+      : <Forecast forecast={cityWeather.get('forecast').toJS()} />
   }
 }
 

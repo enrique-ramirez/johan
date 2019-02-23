@@ -1,6 +1,7 @@
 @import '../styles/variables.css';
 
 .mainNav {
+  font-family: sans-serif;
   list-style: none;
   margin: 0;
   padding: 0;
