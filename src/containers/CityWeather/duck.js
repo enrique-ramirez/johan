@@ -58,6 +58,7 @@ export const makeGetCityWeather = () => createSelector(
     const input = fromJS({
       city: state.getIn(['cityWeather', 'id']),
       forecast: state.getIn(['cityWeather', 'id']),
+      isLoading: state.getIn(['cityWeather', 'loading']),
     })
     const schema = {
       city,

@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 
+import Spinner from 'components/Spinner'
+import Forecast from 'components/Forecast'
+
 // import messages from './messages'
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -27,13 +30,9 @@ class CityWeather extends React.Component {
   render() {
     const { city, cityWeather } = this.props
 
-    console.log({ cityWeather: cityWeather.toJS() })
-
-    return (
-      <div>
-        {city.get('name')}
-      </div>
-    )
+    return cityWeather.get('isLoading')
+      ? <Spinner />
+      : <Forecast city={city.toJS()} forecast={cityWeather.get('forecast').toJS()} />
   }
 }
 
