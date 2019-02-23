@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
 import {
+  makeGetCityWeather,
   loadCity,
 } from './duck'
 
 import CityWeather from './view'
 
 const mapStateToProps = createStructuredSelector({
-
+  cityWeather: makeGetCityWeather(),
 })
 
 const mapDispatchToProps = {

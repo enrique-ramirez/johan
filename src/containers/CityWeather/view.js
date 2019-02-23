@@ -25,7 +25,9 @@ class CityWeather extends React.Component {
   }
 
   render() {
-    const { city } = this.props
+    const { city, cityWeather } = this.props
+
+    console.log({ cityWeather: cityWeather.toJS() })
 
     return (
       <div>
@@ -38,6 +40,8 @@ class CityWeather extends React.Component {
 CityWeather.propTypes = {
   // Function to request
   city: ImmutablePropTypes.map,
+  // cityWeather data
+  cityWeather: ImmutablePropTypes.map,
   // Function to request city data
   requestCity: PropTypes.func,
 }
