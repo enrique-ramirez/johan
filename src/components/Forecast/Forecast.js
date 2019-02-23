@@ -55,8 +55,10 @@ function Forecast(props) {
 
   return (
     <div className={styles.forecast}>
-      <h1>{header}</h1>
-      <Container tagName="ul">
+      <header className={styles.header}>
+        <h1>{header}</h1>
+      </header>
+      <Container isFluid tagName="ul">
         {forecast.list.map((forecastItem) => {
           const dateOptions = {
             day: 'numeric',

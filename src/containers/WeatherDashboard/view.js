@@ -30,15 +30,17 @@ class WeatherDashboard extends React.Component {
 
     const title = 'Todos list'
 
+    const city = currentCity || cities.first()
+
     return (
       <div>
         <Helmet>
           <title>{intl.formatMessage(messages.title)}</title>
         </Helmet>
 
-        <MainNav active={currentCity.get('id')} cities={cities.toJS()} />
+        <MainNav active={city.get('id')} cities={cities.toJS()} />
 
-        <CityWeather city={currentCity} />
+        <CityWeather city={city} />
       </div>
     )
   }
