@@ -1,0 +1,32 @@
+{
+  "presets": ["@babel/preset-react", ["@babel/preset-env"]],
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    "react-hot-loader/babel",
+    ["react-intl-auto", {
+      "removePrefix": "src",
+      "extractComments": true
+    }],
+    "react-intl-id-hash",
+    ["react-intl", {
+      "messagesDir": ".extractedMessages",
+      "enforceDescriptions": true
+    }]
+  ],
+  "minified": false,
+  "comments": true,
+  "env": {
+    "production": {
+      "minified": true,
+      "comments": false
+    },
+    "test": {
+      "presets": [
+        "@babel/preset-react",
+        ["@babel/preset-env", {
+          "modules": "commonjs"
+        }]
+      ]
+    }
+  }
+}
