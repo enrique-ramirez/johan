@@ -19,9 +19,9 @@ import {
 import city from 'store/schemas/city'
 
 /* Actions */
-const cities = domain.defineAction('cities')
+const weatherDashboard = domain.defineAction('weatherDashboard')
 
-export const LOAD_CITIES = cities.defineAction('LOAD_CITIES', [SUCCESS, ERROR])
+export const LOAD_CITIES = weatherDashboard.defineAction('LOAD_CITIES', [SUCCESS, ERROR])
 
 /* Reducer */
 const defaultState = fromJS({

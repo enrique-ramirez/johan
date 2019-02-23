@@ -8,7 +8,7 @@ import cityType from 'types/city'
 
 import MainNav from 'components/MainNav'
 
-// import CityWeather from 'containers/CityWeather'
+import CityWeather from 'containers/CityWeather'
 
 import messages from './messages'
 
@@ -38,7 +38,7 @@ class WeatherDashboard extends React.Component {
 
         <MainNav active={currentCity.get('id')} cities={cities.toJS()} />
 
-        {currentCity.get('name')}
+        <CityWeather city={currentCity} />
       </div>
     )
   }

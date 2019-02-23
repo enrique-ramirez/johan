@@ -4,6 +4,7 @@ import { Map, fromJS } from 'immutable'
 
 /* Resources reducers imports */
 import weatherDashboard from 'containers/WeatherDashboard/duck'
+import cityWeather from 'containers/CityWeather/duck'
 import languageProvider from 'containers/LanguageProvider/duck'
 
 /* Utils */
@@ -34,6 +35,7 @@ const entities = (state = fromJS({}), action) => {
 /* Resources reducer */
 const resources = combineReducers({
   weatherDashboard,
+  cityWeather,
   languageProvider,
 })
 

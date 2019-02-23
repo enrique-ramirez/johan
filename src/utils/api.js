@@ -1,35 +1,11 @@
 import 'whatwg-fetch'
 
-const url = 'http://localhost:1337'
-const headers = {
-  Accept: 'application/json',
-  'Content-Type': 'application/json',
-}
+const apiKey = 'ca1629d8964c684900db3e217a65781b'
+const url = `http://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}`
 
 const parseJSON = response => response.json()
 
-export const loadTasks = () => (
-  fetch(`${url}/tasks`, { headers }).then(parseJSON)
-)
-
-export const createTask = task => (
-  fetch(`${url}/task/create`, {
-    headers,
-    method: 'POST',
-    body: JSON.stringify(task),
-  }).then(parseJSON)
-)
-
-export const deleteTask = ({ id }) => (
-  fetch(`${url}/task/${id}/delete/`, {
-    headers,
-    method: 'DELETE',
-  }).then(parseJSON)
-)
-
-export const completeTask = ({ id }) => (
-  fetch(`${url}/task/${id}/complete/`, {
-    headers,
-    method: 'PUT',
-  }).then(parseJSON)
+// eslint-disable-next-line
+export const loadWeather = cityID => (
+  fetch(`${url}&id=${cityID}`).then(parseJSON)
 )
