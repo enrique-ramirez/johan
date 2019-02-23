@@ -1,10 +1,9 @@
-import { reducer as formReducer } from 'redux-form/immutable'
 import { connectRouter } from 'connected-react-router/immutable'
 import { combineReducers } from 'redux-immutable'
 import { Map, fromJS } from 'immutable'
 
 /* Resources reducers imports */
-import todos, { ADD_TODO } from 'containers/ToDos/duck'
+import weatherDashboard from 'containers/WeatherDashboard/duck'
 import languageProvider from 'containers/LanguageProvider/duck'
 
 /* Utils */
@@ -34,20 +33,8 @@ const entities = (state = fromJS({}), action) => {
 
 /* Resources reducer */
 const resources = combineReducers({
-  todos,
+  weatherDashboard,
   languageProvider,
-})
-
-/* Input reducer */
-const form = formReducer.plugin({
-  addTodo: (state, action) => {
-    switch (action.type) {
-      case ADD_TODO.SUCCESS:
-        return clearReduxForm(state)
-      default:
-        return state
-    }
-  },
 })
 
 /* UI Reducer */
@@ -56,7 +43,6 @@ const form = formReducer.plugin({
 const createRootReducer = history => combineReducers({
   entities,
   resources,
-  form,
   router: connectRouter(history),
 })
 

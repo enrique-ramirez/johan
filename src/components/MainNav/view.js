@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router-dom'
 import {
   Container,
@@ -9,40 +8,34 @@ import {
 } from 'components/Grid'
 
 import styles from './styles.css'
-import messages from './messages'
 
 function MainNav(props) {
-  const { filter } = props
+  const { active, cities } = props
 
   return (
     <Container isFluid>
       <Row className={styles.mainNav} middle="xs" start="xs" tagName="ul" top="xs">
-        <Col tagName="li" xs={4}>
-          {filter === undefined
-            ? <FormattedMessage {...messages.all} tagName="strong" />
-            : <Link to="/"><FormattedMessage {...messages.all} /></Link>
-          }
-        </Col>
-        <Col tagName="li" xs={4}>
-          {filter === 'active'
-            ? <FormattedMessage {...messages.active} tagName="strong" />
-            : <Link to="/active"><FormattedMessage {...messages.active} /></Link>
-          }
-        </Col>
-        <Col tagName="li" xs={4}>
-          {filter === 'done'
-            ? <FormattedMessage {...messages.done} tagName="strong" />
-            : <Link to="/done"><FormattedMessage {...messages.done} /></Link>
-          }
-        </Col>
+        {cities.map(city => (
+          <Col key={city.id} tagName="li" xs={4}>
+            {active === city.id
+              ? <strong>{city.name}</strong>
+              : <Link to={city.id}>{city.name}</Link>
+            }
+          </Col>
+        ))}
       </Row>
     </Container>
   )
 }
 
 MainNav.propTypes = {
-  /** Current active filter. */
-  filter: PropTypes.oneOf(['active', 'done']),
+  /** ID of active city */
+  active: PropTypes.string,
+  /** Cities to display on tab */
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string,
+    id: PropTypes.id,
+  })),
 }
 
 export default MainNav
