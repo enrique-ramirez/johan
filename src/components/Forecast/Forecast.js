@@ -30,8 +30,13 @@ function Forecast(props) {
 }
 
 Forecast.propTypes = {
-  // eslint-disable-next-line
-  forecast: PropTypes.object,
+  forecast: PropTypes.shape({
+    city: PropTypes.shape({
+      country: PropTypes.string,
+      name: PropTypes.string,
+    }),
+    list: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
 }
 
 export default Forecast
